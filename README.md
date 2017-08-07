@@ -1,6 +1,6 @@
 # Fuzzy C-Means
 
-Coding a kmeans code that read a database with 4 attributes and n classes.
+Coding a Fuzzy c-Means code that read a database with 4 attributes and n classes.
 
 I am using, 3 datasets.
 

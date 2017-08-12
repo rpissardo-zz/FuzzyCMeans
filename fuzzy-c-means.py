@@ -36,13 +36,13 @@ dados_completos = np.vstack((a['eixo_x'], a['eixo_y']))
 cores = ['#932107','#089cc1','#c26ddf','#d8fa11','#fdf08d','#d0b79b','#c2f95d','#663990','#fd37b6','#a79189','#06ef13','#606f3a','#70a083','#91501c','#de9559','#a5ae77','#38269c','#77a7c9'] 
 numero_centroides = [2,3,16]
 for count, ax in enumerate(axes1.reshape(-1), 1):
-    fuzzy_response = fuzz.cluster.cmeans(
+    fuzzy = fuzz.cluster.cmeans(
         dados_completos, numero_centroides[count-1], 2, error=0.005, maxiter=9999999, init=None)
-    membro_do_cluster = np.argmax(fuzzy_response[1], axis=0)
+    membro_do_cluster = np.argmax(fuzzy[1], axis=0)
     for j in range(numero_centroides[count-1]):
         ax.plot(a['eixo_x'][membro_do_cluster == j],
                 a['eixo_y'][membro_do_cluster == j], '.', color=cores[j])
-    for pt in fuzzy_response[0]:
+    for pt in fuzzy[0]:
         ax.plot(pt[0], pt[1], 'rs')
     ax.set_title(str(numero_centroides[count-1])+' centroides')
 fig1.tight_layout()
